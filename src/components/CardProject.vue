@@ -50,10 +50,10 @@ defineProps({
       </div>
       <div class="w-1/3">
         <h1 v-if="isDone"
-          class="flex-1 p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300">
+          class="cursor-default p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300">
           Selesai
         </h1>
-        <h1 v-else class="w-full p-2 text-center text-lg rounded-full bg-rose-500 border-[0.8px] border-rose-300"
+        <h1 v-else class="cursor-default p-2 text-center text-lg rounded-full bg-rose-500 border-[0.8px] border-rose-300"
           @click="changeDate">
           Belum Selesai
         </h1>
