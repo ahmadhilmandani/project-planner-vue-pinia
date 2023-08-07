@@ -41,7 +41,7 @@ const projectsList = ref(
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
 
     <div v-for="project in projectsList">
-      <CardProject :isDone="project.isDone">
+      <CardProject :isDoneProps="project.isDone">
         <template #title>
           {{ project.title }}
         </template>

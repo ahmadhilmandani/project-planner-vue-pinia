@@ -1,14 +1,26 @@
-<script setup>
-defineProps({
-  isDone: Boolean
-})
+<script>
+export default {
+  props: {
+    isDoneProps: Boolean
+  },
+  data() {
+    return {
+      isDone: this.isDoneProps,
+    }
+  },
+  methods: {
+    changeIsDone() {
+      this.isDone = !this.isDone
+    }
+  }
+}
 
 </script>
 
 
 <template>
   <div class="bg-neutral-900 border-[0.8px] border-neutral-800 w-[560px] rounded-tr-3xl px-4 py-8">
-    
+
     <div class="flex gap-8 items-center">
       <h1 class="text-2xl text-white bg-neutral-800 px-5 py-2 rounded-full w-fit">
         <slot name="title"></slot>
@@ -59,7 +71,8 @@ defineProps({
         </h1>
         <div class="flex mt-2 items-center justify-center gap-2">
           <h1 v-if="isDone === false"
-            class="flex-1 p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer">
+            class="flex-1 p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer"
+            @click="changeIsDone">
             Selesaikan
           </h1>
           <div
