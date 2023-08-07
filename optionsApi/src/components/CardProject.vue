@@ -1,4 +1,6 @@
 <script>
+import { computed } from 'vue';
+
 export default {
   props: {
     isDoneProps: Boolean
@@ -12,6 +14,9 @@ export default {
     changeIsDone() {
       this.isDone = !this.isDone
     }
+  },
+  computed: {
+
   }
 }
 

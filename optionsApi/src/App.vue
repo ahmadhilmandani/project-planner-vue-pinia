@@ -1,38 +1,43 @@
-<script setup>
-import CardProject from './components/CardProject.vue'
-import { ref } from 'vue';
-
-const projectsList = ref(
-  [
-    {
-      id: "1",
-      title: "Belajar Pinia",
-      deadline: "05 Desember 2023",
-      deadlineLeft: "11 Hari",
-      body: "When used with Vue <2.7, you need to install the @vue/composition-api plugin. You can learn how to do that here. Once this is done, you can proceed with the below.",
-      thingsToDo: [
-        "Vue JS basic",
-        "Kuota Internet",
-        "Kopi",
-      ],
-      isDone: false
-    },
-    {
-      id: "2",
-      title: "Belajar Supabase",
-      deadline: "27 Januari 2024",
-      deadlineLeft: "42 Hari",
-      body: "complicated classes you want to add to your project that you do still like Use the components layer Vuelidate is considered model-based because the validation rules are defined next to your data, and the validation tree structure matches the data model structure.",
-      thingsToDo: [
-        "Vue JS basic",
-        "Pinia",
-        "Kuota Internet",
-        "Kopi",
-      ],
-      isDone: true
-    },
-  ]
-)
+<script>
+  import CardProject from './components/CardProject.vue'
+export default {
+  data() {
+    return {
+      projectsList: [
+        {
+          id: "1",
+          title: "Belajar Pinia",
+          deadline: "05 Desember 2023",
+          deadlineLeft: "11 Hari",
+          body: "When used with Vue <2.7, you need to install the @vue/composition-api plugin. You can learn how to do that here. Once this is done, you can proceed with the below.",
+          thingsToDo: [
+            "Vue JS basic",
+            "Kuota Internet",
+            "Kopi",
+          ],
+          isDone: false
+        },
+        {
+          id: "2",
+          title: "Belajar Supabase",
+          deadline: "27 Januari 2024",
+          deadlineLeft: "42 Hari",
+          body: "complicated classes you want to add to your project that you do still like Use the components layer Vuelidate is considered model-based because the validation rules are defined next to your data, and the validation tree structure matches the data model structure.",
+          thingsToDo: [
+            "Vue JS basic",
+            "Pinia",
+            "Kuota Internet",
+            "Kopi",
+          ],
+          isDone: true
+        },
+      ]
+    }
+  },
+  components: {
+    CardProject
+  }
+}
 
 </script>
 
