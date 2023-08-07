@@ -3,23 +3,17 @@ import { computed } from 'vue';
 
 export default {
   props: {
-    isDoneProps: Boolean
-  },
-  data() {
-    return {
-      isDone: this.isDoneProps,
-    }
+    isDone: Boolean
   },
   methods: {
-    changeIsDone() {
-      this.isDone = !this.isDone
+    toogleIsDone() {
+      this.$emit("toogleIsDone")
     }
   },
   computed: {
 
-  }
+  },
 }
-
 </script>
 
 
@@ -77,7 +71,7 @@ export default {
         <div class="flex mt-2 items-center justify-center gap-2">
           <h1 v-if="isDone === false"
             class="flex-1 p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer"
-            @click="changeIsDone">
+            @click="toogleIsDone">
             Selesaikan
           </h1>
           <div
