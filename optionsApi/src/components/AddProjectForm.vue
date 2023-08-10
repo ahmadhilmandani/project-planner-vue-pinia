@@ -56,15 +56,12 @@ export default {
         waktu</label>
       <input v-model="deadline" type="date" ref="deadline" id="deadline"
         class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-black invert text-sm" />
-        <div v-if="v$.deadline.$error">
+      <div v-if="v$.deadline.$error">
         <div v-for="error of v$.deadline.$errors" :key="error.$uid">
-          <div class="text-xs text-rose-400 mt-2 mb-5">{{ error.$message }}</div>
-          <div class="text-xs text-rose-400 mt-2 mb-5">{{ error.$message }}</div>
-          <div class="text-xs text-rose-400 mt-2 mb-5">{{ error.$message }}</div>
           <div class="text-xs text-rose-400 mt-2 mb-5">{{ error.$message }}</div>
         </div>
       </div>
-      </div>
+    </div>
 
 
     <div class="mb-5">
@@ -87,10 +84,5 @@ export default {
         Tambah
       </h1>
     </button>
-
-    {{ title }}
-    {{ deadline }}
-    {{ description }}
-    {{ step }}
   </form>
 </template>
