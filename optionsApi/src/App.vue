@@ -1,7 +1,7 @@
 <script>
 import CardProject from './components/CardProject.vue'
 import AddProjectForm from './components/AddProjectForm.vue'
-import Navigation from './components/Navigation.vue'
+import SidebarNav from './components/SidebarNav.vue'
 
 export default {
   data() {
@@ -40,7 +40,7 @@ export default {
   components: {
     CardProject,
     AddProjectForm,
-    Navigation
+    SidebarNav
   },
   methods: {
     toogleIsDone(index) {
@@ -54,13 +54,8 @@ export default {
 
 <template>
   <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-10">
-    <Navigation />
+    <SidebarNav />
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
-
-    <!-- <div class="my-5">
-      <AddProjectForm />
-    </div> -->
-
 
     <div v-for="(project, index) in projectsList">
       <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(index) }">
