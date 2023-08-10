@@ -2,6 +2,7 @@
 import CardProject from './components/CardProject.vue'
 import AddProjectForm from './components/AddProjectForm.vue'
 import SidebarNav from './components/SidebarNav.vue'
+import TopbarNav from './components/TopbarNav.vue'
 
 export default {
   data() {
@@ -40,7 +41,8 @@ export default {
   components: {
     CardProject,
     AddProjectForm,
-    SidebarNav
+    SidebarNav,
+    TopbarNav
   },
   methods: {
     toogleIsDone(index) {
@@ -55,6 +57,7 @@ export default {
 <template>
   <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-10">
     <SidebarNav />
+    <TopbarNav />
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
 
     <div v-for="(project, index) in projectsList">
