@@ -82,6 +82,7 @@ export default {
       </CardProject>
     </div>
   </div>
+  <router-view />
 </template>
 
 <style scoped></style>
