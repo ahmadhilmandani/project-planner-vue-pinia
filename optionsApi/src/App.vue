@@ -1,60 +1,69 @@
 <script>
-  import CardProject from './components/CardProject.vue'
-  export default {
-    data() {
-      return {
-        projectsList: [
-          {
-            id: "1",
-            title: "Belajar Pinia",
-            deadline: "05 Desember 2023",
-            deadlineLeft: "11 Hari",
-            body: "When used with Vue <2.7, you need to install the @vue/composition-api plugin. You can learn how to do that here. Once this is done, you can proceed with the below.",
-            thingsToDo: [
-              "Vue JS basic",
-              "Kuota Internet",
-              "Kopi",
-            ],
-            isDone: false
-          },
-          {
-            id: "2",
-            title: "Belajar Supabase",
-            deadline: "27 Januari 2024",
-            deadlineLeft: "42 Hari",
-            body: "complicated classes you want to add to your project that you do still like Use the components layer Vuelidate is considered model-based because the validation rules are defined next to your data, and the validation tree structure matches the data model structure.",
-            thingsToDo: [
-              "Vue JS basic",
-              "Pinia",
-              "Kuota Internet",
-              "Kopi",
-            ],
-            isDone: true
-          },
-        ]
-      }
-    },
-    components: {
-      CardProject
+import CardProject from './components/CardProject.vue'
+import AddProjectForm from './components/AddProjectForm.vue'
+import Navigation from './components/Navigation.vue'
+
+export default {
+  data() {
+    return {
+      projectsList: [
+        {
+          id: "1",
+          title: "Belajar Pinia",
+          deadline: "05 Desember 2023",
+          deadlineLeft: "11 Hari",
+          body: "When used with Vue <2.7, you need to install the @vue/composition-api plugin. You can learn how to do that here. Once this is done, you can proceed with the below.",
+          thingsToDo: [
+            "Vue JS basic",
+            "Kuota Internet",
+            "Kopi",
+          ],
+          isDone: false
+        },
+        {
+          id: "2",
+          title: "Belajar Supabase",
+          deadline: "27 Januari 2024",
+          deadlineLeft: "42 Hari",
+          body: "complicated classes you want to add to your project that you do still like Use the components layer Vuelidate is considered model-based because the validation rules are defined next to your data, and the validation tree structure matches the data model structure.",
+          thingsToDo: [
+            "Vue JS basic",
+            "Pinia",
+            "Kuota Internet",
+            "Kopi",
+          ],
+          isDone: true
+        },
+      ]
+    }
+  },
+  components: {
+    CardProject,
+    AddProjectForm,
+    Navigation
   },
   methods: {
     toogleIsDone(index) {
       this.projectsList[index].isDone = true
       console.log(this.projectsList[index].isDone)
-      }
     }
   }
+}
 
 </script>
 
 <template>
-  <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-20">
+  <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-10">
+    <Navigation />
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
 
-    
+    <!-- <div class="my-5">
+      <AddProjectForm />
+    </div> -->
+
 
     <div v-for="(project, index) in projectsList">
-      <CardProject :isDone="project.isDone" @toogleIsDone="()=>{toogleIsDone(index)}">
+      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(index) }">
         <template #title>
           {{ project.title }}
         </template>
