@@ -2,8 +2,8 @@
 export default {
   computed: {
     isRoute(routeName) {
-    this.$route.name === this.$route.name.startsWith(routeName) ? true : false
-   } 
+      this.$route.name === this.$route.name.startsWith(routeName) ? true : false
+    }
   }
 }
 </script>
@@ -18,7 +18,7 @@ export default {
       Berjalan
     </router-link>
     <router-link to="/done">
-      selesai
+      Selesai
     </router-link>
     <a href="https://ahmadhilmandani.netlify.app/" target="_blank"
       class="bg-neutral-950 border-[0.8px] border-neutral-700 px-4 py-1 rounded-full font-semibold">
@@ -26,3 +26,9 @@ export default {
     </a>
   </div>
 </template>
+
+<style>
+.router-link-active {
+  @apply bg-emerald-500 font-semibold tracking-wider border-[0.8px] px-3 py-1 rounded-full border-emerald-300
+}
+</style>
