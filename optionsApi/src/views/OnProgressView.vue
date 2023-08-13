@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-10">
+  <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 px-10 py-24">
     <SidebarNav />
     <TopbarNav />
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
