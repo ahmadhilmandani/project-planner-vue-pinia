@@ -1,25 +1,19 @@
 <script>
-import { computed } from 'vue';
-
 export default {
   props: {
-    isDone: Boolean
+    isDone: Boolean,
   },
   methods: {
     toogleIsDone() {
       this.$emit("toogleIsDone")
     }
-  },
-  computed: {
-
-  },
+  }
 }
 </script>
 
 
 <template>
   <div class="bg-neutral-900 border-[0.8px] border-neutral-800 w-[560px] rounded-tr-3xl px-4 py-8">
-
     <div class="flex gap-8 items-center">
       <h1 class="text-2xl text-white bg-neutral-800 px-5 py-2 rounded-full w-fit">
         <slot name="title"></slot>
@@ -61,11 +55,10 @@ export default {
       </div>
       <div class="w-1/3">
         <h1 v-if="isDone"
-          class="cursor-default p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300">
+          class="cursor-default p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300" >
           Selesai
         </h1>
-        <h1 v-else class="cursor-default p-2 text-center text-lg rounded-full bg-rose-500 border-[0.8px] border-rose-300"
-          @click="changeDate">
+        <h1 v-else class="cursor-default p-2 text-center text-lg rounded-full bg-rose-500 border-[0.8px] border-rose-300">
           Belum Selesai
         </h1>
         <div class="flex mt-2 items-center justify-center gap-2">

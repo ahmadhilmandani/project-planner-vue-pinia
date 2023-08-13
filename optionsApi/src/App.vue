@@ -1,13 +1,26 @@
 <script>
 import CardProject from './components/CardProject.vue'
-import AddProjectForm from './components/AddProjectForm.vue'
 import SidebarNav from './components/SidebarNav.vue'
 import TopbarNav from './components/TopbarNav.vue'
 
 export default {
   data() {
     return {
-      projectsList: [
+      projectsList: localStorage.getItem("projectsList")
+    }
+  },
+  components: {
+    CardProject,
+    SidebarNav,
+    TopbarNav
+  },
+  methods: {
+    toogleIsDone(index) {
+      this.projectsList[index].isDone = true
+      console.log(this.projectsList[index].isDone)
+    },
+    test() {
+      localStorage.setItem("projectsList", JSON.stringify([
         {
           id: "1",
           title: "Belajar Pinia",
@@ -33,21 +46,9 @@ export default {
             "Kuota Internet",
             "Kopi",
           ],
-          isDone: true
+          isDone: false
         },
-      ]
-    }
-  },
-  components: {
-    CardProject,
-    AddProjectForm,
-    SidebarNav,
-    TopbarNav
-  },
-  methods: {
-    toogleIsDone(index) {
-      this.projectsList[index].isDone = true
-      console.log(this.projectsList[index].isDone)
+      ]))
     }
   }
 }
@@ -55,34 +56,12 @@ export default {
 </script>
 
 <template>
-  <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 p-10">
+  <div>
+    <!-- <div class="fixed top-0 bottom-0 left-0 right-0 bg-blue-500 z-[99]" @click="test"></div> -->
     <SidebarNav />
     <TopbarNav />
-    <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
-
-    <div v-for="(project, index) in projectsList">
-      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(index) }">
-        <template #title>
-          {{ project.title }}
-        </template>
-        <template #deadline>
-          {{ project.deadline }}
-        </template>
-        <template #deadlineLeft>
-          {{ project.deadlineLeft }}
-        </template>
-        <template #body>
-          {{ project.body }}
-        </template>
-        <template #thingsToDo>
-          <ul class="list-disc" v-for="thingTodo in project.thingsToDo">
-            <li>{{ thingTodo }}</li>
-          </ul>
-        </template>
-      </CardProject>
-    </div>
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <style scoped></style>

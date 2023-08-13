@@ -4,9 +4,7 @@ export default {
   components: {
     AddProjectForm
   }
-  
 }
-
 </script>
 
 
