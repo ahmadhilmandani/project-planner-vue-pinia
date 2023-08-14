@@ -23,8 +23,23 @@ export default {
     async handleAddProject() {
       this.isLoading = true
       const isFormCorrect = await this.v$.$validate()
-      this.isLoading = false
-      console.log(isFormCorrect)
+
+      if (isFormCorrect) {
+        let projectsList = JSON.parse(localStorage.getItem("projectsList"))
+        const deadline = new Date(this.deadline);
+        const currentDate = new Date();
+        const timeDifference = deadline - currentDate;
+
+        if (projectsList == null || projectsList[0] == null) {
+          projectsList = [{ id: 1, title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: ["Vue", "Pinia", "Produk"], isDone: false }]
+          localStorage.setItem("projectsList", JSON.stringify(projectsList))
+        }
+        else {
+          projectsList.push({ id: (projectsList[projectsList.length - 1].id + 1), title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: ["Vue", "Pinia", "Produk"], isDone: false })
+          localStorage.setItem("projectsList", JSON.stringify(projectsList))
+        }
+        location.reload();
+      }
     }
   }
 }
@@ -36,7 +51,6 @@ export default {
   <form action="" class="bg-neutral-900 border-[0.8px] border-neutral-800 px-10 py-5 text-white"
     @submit.prevent="handleAddProject">
     <h1 class="text-xl mb-4">Tambah project</h1>
-
 
     <div class="mb-5">
       <label class="block bg-transparent mb-2 text-sm whitespace-nowrap" for="title">Judul
@@ -78,7 +92,7 @@ export default {
     </div>
 
 
-    <button class="w-full block" @click="handleAddProject">
+    <button class="w-full block">
       <h1
         class="p-1 text-lg text-center rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer mt-6">
         Tambah

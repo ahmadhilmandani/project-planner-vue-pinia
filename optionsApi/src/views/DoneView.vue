@@ -11,9 +11,25 @@ export default {
     CardProject,
   },
   methods: {
-    toogleIsDone(index) {
-      this.projectsList[index].isDone = true
+    toogleIsDone(projectId) {
+      for (let index = 0; index < this.projectsList.length; index++) {
+        if (this.projectsList[index].id === projectId) {
+          this.projectsList[index].isDone = true
+          localStorage.setItem("projectsList", JSON.stringify(this.projectsList))
+          break;
+        }
+      }
+    },
+    deleteProject(projectId) {
+      this.projectsList = this.projectsList.filter((project) => {
+        return project.id != projectId
+      })
       localStorage.setItem("projectsList", JSON.stringify(this.projectsList))
+    }
+  },
+  computed: {
+    filteredProjects() {
+      return this.projectsList.filter((projectList) => projectList.isDone === true)
     }
   }
 }
@@ -24,8 +40,9 @@ export default {
   <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 px-10 py-24">
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
 
-    <div v-for="(project, index) in projectsList">
-      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(project.id - 1) }">
+    <div v-for="(project, index) in filteredProjects">
+      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(project.id) }"
+        @deleteProject="() => { deleteProject(project.id) }">
         <template #title>
           {{ project.title }}
         </template>

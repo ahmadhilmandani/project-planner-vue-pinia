@@ -6,6 +6,9 @@ export default {
   methods: {
     toogleIsDone() {
       this.$emit("toogleIsDone")
+    },
+    deleteProject() {
+      this.$emit("deleteProject")
     }
   }
 }
@@ -35,6 +38,7 @@ export default {
       </div>
       <p class="text-xs text-neutral-400">
         <slot name="deadlineLeft"></slot>
+        hari lagi
       </p>
     </div>
 
@@ -68,7 +72,8 @@ export default {
             Selesaikan
           </h1>
           <div
-            class="border-[0.8px] border-neutral-700 flex-1 p-2 rounded-full hover:bg-opacity-30 cursor-pointer hover:bg-neutral-700">
+            class="border-[0.8px] border-neutral-700 flex-1 p-2 rounded-full hover:bg-opacity-30 cursor-pointer hover:bg-neutral-700"
+            @click="deleteProject">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash mx-auto" width="16"
               height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
