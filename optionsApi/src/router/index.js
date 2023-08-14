@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllView from '../views/AllView.vue'
+import NotFound from '../views/NotFound.vue'
 import DoneView from '../views/DoneView.vue'
 import OnProgressView from '../views/OnProgressView.vue'
 
@@ -7,7 +8,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/all',
+      path: '/',
       name: 'all',
       component: AllView,
       props: { newsletterPopup: false }
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/on-progress',
       name: 'on-progress',
       component: OnProgressView
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'notFound',
+      component: NotFound
     }
   ]
 })
