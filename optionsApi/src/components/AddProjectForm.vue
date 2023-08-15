@@ -105,7 +105,7 @@ export default {
     <div ref="stepContainer">
       <label class="block bg-transparent mb-2 text-sm whitespace-nowrap" for="step">Langkah</label>
       <div v-for="number in numbers">
-        <input :v-model="stepInput" type="text" id="step" :ref="`step_${number}`" :value="null"
+        <input type="text" id="step" :ref="`step_${number}`" :value="null"
           class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-sm"
           @change="(e) => { handleStep(e, number - 1) }">
       </div>

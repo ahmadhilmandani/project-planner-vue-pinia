@@ -2,12 +2,6 @@
 import CardProject from '../components/CardProject.vue'
 
 export default {
-  props: {
-    items: {
-      type: Array,
-      default: () => []
-    }
-  },
   data() {
     return {
       projectsList: JSON.parse(localStorage.getItem("projectsList"))
