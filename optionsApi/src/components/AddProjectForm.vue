@@ -1,18 +1,20 @@
 <script>
 import { useVuelidate } from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
+import { IconPlus } from '@tabler/icons-vue';
 export default {
   setup() {
     return { v$: useVuelidate() }
   },
-
   data() {
     return {
       title: '',
       deadline: '',
       description: '',
-      step: '',
-      isLoading: '',
+      step: [],
+      isLoading: false,
+      numbers: 1,
+      isStepError: false,
     };
   },
   validations: {
@@ -26,21 +28,37 @@ export default {
 
       if (isFormCorrect) {
         let projectsList = JSON.parse(localStorage.getItem("projectsList"))
-        const deadline = new Date(this.deadline);
-        const currentDate = new Date();
-        const timeDifference = deadline - currentDate;
+        const timeDifference = new Date(this.deadline) - new Date();
 
         if (projectsList == null || projectsList[0] == null) {
-          projectsList = [{ id: 1, title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: ["Vue", "Pinia", "Produk"], isDone: false }]
+          projectsList = [{ id: 1, title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: this.step, isDone: false }]
           localStorage.setItem("projectsList", JSON.stringify(projectsList))
         }
         else {
-          projectsList.push({ id: (projectsList[projectsList.length - 1].id + 1), title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: ["Vue", "Pinia", "Produk"], isDone: false })
+          projectsList.push({ id: (projectsList[projectsList.length - 1].id + 1), title: this.title, body: this.description, deadline: this.deadline, deadlineLeft: Math.floor(timeDifference / (24 * 60 * 60 * 1000)), thingsToDo: this.step, isDone: false })
           localStorage.setItem("projectsList", JSON.stringify(projectsList))
         }
         location.reload();
       }
+    },
+    addStep() {
+      if (this.step.length < this.numbers)
+        return this.isStepError = true
+
+      this.numbers++
+      this.isStepError = false
+    },
+    handleStep(e, number) {
+      if (e.target.value !== '' || e.target.value !== null || e.target.value !== undefined) {
+        if (this.step.length >= number)
+          return this.step[number] = e.target.value
+
+        this.step.push(e.target.value)
+      }
     }
+  },
+  components: {
+    IconPlus
   }
 }
 </script>
@@ -84,17 +102,28 @@ export default {
         class="w-full border-[0.8px] border-neutral-700 outline-none bg-transparent text-sm h-40">
     </div>
 
-
-    <div class="mb-5">
+    <div ref="stepContainer">
       <label class="block bg-transparent mb-2 text-sm whitespace-nowrap" for="step">Langkah</label>
-      <input v-model="step" type="text" ref="step" id="step"
-        class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-sm">
+      <div v-for="number in numbers">
+        <input :v-model="stepInput" type="text" id="step" :ref="`step_${number}`" :value="null"
+          class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-sm"
+          @change="(e) => { handleStep(e, number - 1) }">
+      </div>
+      <div v-if="isStepError">
+        <div class="text-xs text-rose-400 mt-2 mb-5">
+          Langkah diatas masih kosong nih, isi dulu aja!
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center mt-2 gap-x-2 group">
+      <IconPlus color="white" :size="20" stroke-width="1.4" class=" group-hover:opacity-60" />
+      <button type="button" class="text-xs group-hover:opacity-60" @click="addStep">tambah langkah</button>
     </div>
 
 
-    <button class="w-full block">
+    <button type="submit" class="w-full block mt-10">
       <h1
-        class="p-1 text-lg text-center rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer mt-6">
+        class="p-1 text-lg text-center rounded-full bg-emerald-500 border-[0.8px] border-emerald-300 hover:bg-opacity-30 cursor-pointer">
         Tambah
       </h1>
     </button>

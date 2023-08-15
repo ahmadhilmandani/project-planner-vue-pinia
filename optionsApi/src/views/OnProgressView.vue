@@ -56,9 +56,12 @@ export default {
           {{ project.body }}
         </template>
         <template #thingsToDo>
-          <ul class="list-disc" v-for="thingTodo in project.thingsToDo">
-            <li>{{ thingTodo }}</li>
-          </ul>
+          <ol v-if="project.thingsToDo.length != 0" v-for="(thingTodo, index) in project.thingsToDo">
+            <li>{{ (++index) + ". " + thingTodo }}</li>
+          </ol>
+          <ol v-else>
+            <li>-</li>
+          </ol>
         </template>
       </CardProject>
     </div>

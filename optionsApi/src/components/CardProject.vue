@@ -53,7 +53,7 @@ export default {
 
     <div class="text-white text-sm mt-6 px-5 flex justify-between items-center">
       <div>
-        <div>Hal yang harus dilakukan </div>
+        <div>Langkah penyelesaian project </div>
         <slot name="thingsToDo">
         </slot>
       </div>
