@@ -1,48 +1,18 @@
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-import { computed, ref, watchEffect } from 'vue'
+import { RouterView } from 'vue-router'
 import { IconClick } from '@tabler/icons-vue'
+import SidebarAddForm from './components/SidebarAddForm.vue'
 import TopNavbar from './components/TopNavbar.vue'
 
 export default {
-  setup() {
-    console.log('commposition')
-
-    const test = ref(null)
-    const searchInput = ref('')
-    const arraysTest = ref(['mario', 'yoshi', 'toad', 'bowser', 'ahmad', 'hilman', 'dani'])
-
-    let name = 'mario'
-
-    const handleClick = () => {
-      console.log(test)
-      console.log(test.value)
-      test.value.textContent = test + "   " + test.value
-      test.value.classList.add('bg-rose-500')
-    }
-
-    const computedArraysTest = computed(() => {
-      console.log('jalan')
-      return arraysTest.value.filter((arrayTest) => {
-        return arrayTest.includes(searchInput.value)
-      })
-    })
-
-    watchEffect(() => {
-      console.log("testinggg")
-    }, searchInput)
-
-
-    return { name, test, handleClick, searchInput, arraysTest, computedArraysTest }
-  },
-  components: { IconClick, TopNavbar }
+  components: { IconClick, TopNavbar, SidebarAddForm }
 }
 </script>
 
 <template>
   <div class="w-full min-h-screen bg-neutral-950">
+    <SidebarAddForm />
     <TopNavbar />
     <RouterView />
   </div>
 </template>
-
