@@ -1,26 +1,13 @@
 <script>
 import { ref } from 'vue';
 import CardProject from '../components/CardProject.vue'
+import getProjects from '../composables/getProjects';
+import toogleIsDone from '../composables/toogleIsDone'
+import deleteProject from '../composables/deleteProject'
 export default {
   setup() {
-    const projects = ref(JSON.parse(localStorage.getItem("projects")))
+    const projects = ref(getProjects())
 
-    const toogleIsDone = (projectId) => {
-      for (let index = 0; index < projects.value.length; index++) {
-        if (projects.value[index].id === projectId) {
-          projects.value[index].isDone = true
-          localStorage.setItem("projects", JSON.stringify(projects.value))
-          break;
-        }
-      }
-    }
-
-    const deleteProject = (projectId) => {
-      projects.value = projects.value.filter((project) => {
-        return project.id != projectId
-      })
-      localStorage.setItem("projects", JSON.stringify(projects.value))
-    }
     return { projects, toogleIsDone, deleteProject }
   },
   components: { CardProject }
@@ -33,8 +20,8 @@ export default {
   <div class="bg-neutral-950 flex flex-col justify-center items-center w-full min-h-screen gap-10 px-10 py-24">
     <h1 class="text-6xl text-white font-bold">Simple Project Planner</h1>
     <div v-for="(project, index) in projects">
-      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(project.id) }"
-        @deleteProject="() => { deleteProject(project.id) }">
+      <CardProject :isDone="project.isDone" @toogleIsDone="() => { toogleIsDone(projects, project.id) }"
+        @deleteProject="() => { deleteProject(projects, project.id) }">
         <template #title>
           {{ project.title }}
         </template>
