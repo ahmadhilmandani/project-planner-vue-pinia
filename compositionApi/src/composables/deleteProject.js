@@ -6,5 +6,4 @@ export default function deleteProject(projects, projectId) {
   }
 
   localStorage.setItem("projects", JSON.stringify(projects))
-
 }
