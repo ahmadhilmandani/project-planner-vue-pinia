@@ -76,7 +76,7 @@ export default {
 
       <div class="mb-5">
         <label class="block bg-transparent mb-2 text-sm whitespace-nowrap" for="title">Judul
-          project</label>
+          project <span class="text-rose-400 font-semibold">*</span></label>
         <input v-model="title" type="text" id="title"
           class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-sm">
         <div v-if="v$.title.$error">
@@ -88,7 +88,7 @@ export default {
 
       <div class="mb-5">
         <label class="block bg-transparent mb-2 text-sm whitespace-nowrap" for="deadline">Tenggat
-          waktu</label>
+          waktu <span class="text-rose-400 font-semibold">*</span></label>
         <input v-model="deadline" type="date" id="deadline"
           class="w-full border-b-[0.8px] border-neutral-700 outline-none bg-transparent text-black invert text-sm" />
         <div v-if="v$.deadline.$error">
