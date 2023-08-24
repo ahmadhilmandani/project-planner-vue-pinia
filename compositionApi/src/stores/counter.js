@@ -8,5 +8,9 @@ export const useCounterStore = defineStore('counter', () => {
     count.value++
   }
 
+  getters: {
+
+  }
+
   return { count, doubleCount, increment }
 })
