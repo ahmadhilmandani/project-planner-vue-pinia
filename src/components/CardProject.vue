@@ -1,6 +1,8 @@
 <script>
 export default {
-  props: ['isDone'],
+  props: {
+    isDone: Boolean,
+  },
   methods: {
     toogleIsDone() {
       this.$emit("toogleIsDone")
@@ -10,8 +12,8 @@ export default {
     }
   }
 }
-
 </script>
+
 
 <template>
   <div class="bg-neutral-900 border-[0.8px] border-neutral-800 w-[560px] rounded-tr-3xl px-4 py-8">
@@ -57,7 +59,7 @@ export default {
       </div>
       <div class="w-1/3">
         <h1 v-if="isDone"
-          class="cursor-default p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300">
+          class="cursor-default p-2 text-center text-sm rounded-full bg-emerald-500 border-[0.8px] border-emerald-300" >
           Selesai
         </h1>
         <h1 v-else class="cursor-default p-2 text-center text-lg rounded-full bg-rose-500 border-[0.8px] border-rose-300">
@@ -86,5 +88,6 @@ export default {
         </div>
       </div>
     </div>
+
   </div>
 </template>

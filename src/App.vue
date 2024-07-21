@@ -1,18 +1,35 @@
 <script>
-import { RouterView } from 'vue-router'
-import { IconClick } from '@tabler/icons-vue'
-import SidebarAddForm from './components/SidebarAddForm.vue'
-import TopNavbar from './components/TopNavbar.vue'
+import CardProject from './components/CardProject.vue'
+import SidebarNav from './components/SidebarNav.vue'
+import TopbarNav from './components/TopbarNav.vue'
 
 export default {
-  components: { IconClick, TopNavbar, SidebarAddForm }
+  data() {
+    return {
+      projectsList: localStorage.getItem("projectsList")
+    }
+  },
+  components: {
+    CardProject,
+    SidebarNav,
+    TopbarNav
+  },
+  methods: {
+    toogleIsDone(index) {
+      this.projectsList[index].isDone = true
+      console.log(this.projectsList[index].isDone)
+    }
+  }
 }
+
 </script>
 
 <template>
-  <div class="w-full min-h-screen bg-neutral-950">
-    <SidebarAddForm />
-    <TopNavbar />
-    <RouterView />
+  <div>
+    <SidebarNav />
+    <TopbarNav />
+    <router-view />
   </div>
 </template>
+
+<style scoped></style>
