@@ -3,14 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  *{
-    @apply leading-[150%] text-white
+  * {
+    @apply leading-[150%] text-white;
   }
-  *:not(h1,h2,h3,h4,h5,h6){
-    font-family: 'Inter', sans-serif;
+  *:not(h1, h2, h3, h4, h5, h6) {
+    font-family: "Inter", sans-serif;
   }
-  h1,h2,h3,h4,h5,h6 {
-    font-family: 'Bebas Neue', sans-serif;
-    @apply tracking-wide
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bebas Neue", sans-serif;
+    @apply tracking-wide;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-700 rounded-full
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }
