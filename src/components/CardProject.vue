@@ -1,11 +1,14 @@
 <script setup>
 import { IconCalendarDue } from '@tabler/icons-vue'
+import { RouterLink } from 'vue-router'
+import FillButtonComp from './FillButtonComp.vue'
 defineProps({
   isDone: {
     validator(value) {
       return [true, false].includes(value)
     }
-  }
+  },
+  projectId: Number
 })
 
 </script>
@@ -15,7 +18,7 @@ defineProps({
     class="bg-neutral-900 border-[0.8px] border-neutral-800 w-[300px] aspect-[13/16] rounded-tr-3xl px-4 py-8 relative">
     <div>
       <small class="py-1 px-3 text-center rounded-full w-fit" :class="isDone ? 'bg-emerald-500' : 'bg-rose-500'">
-      {{ isDone ? 'Selesai' : 'belum selesai'}}
+      {{ isDone ? 'Selesai' : 'Belum selesai'}}
     </small>
       <h1 class="text-2xl text-white mt-3">
         <slot name="title"></slot>
@@ -29,7 +32,6 @@ defineProps({
         </div>
         <p class="text-sm">
           <slot name="deadlineLeft"></slot>
-          hari lagi
         </p>
       </div>
     </div>
@@ -43,8 +45,10 @@ defineProps({
       </p>
     </div>
 
-    <h1 class="absolute bottom-5 right-5 left-5 cursor-default p-2 text-center rounded-full bg-neutral-700">
-      Detail
-    </h1>
+    <RouterLink :to="'/projects/'+projectId" class="absolute bottom-5 right-5 left-5">
+      <FillButtonComp>
+        Detail
+      </FillButtonComp>
+    </RouterLink>
   </div>
 </template>

@@ -10,7 +10,6 @@ const isLoading = ref(true)
 onMounted(() => {
   axios.get('http://127.0.0.1:8000/api/v1/task')
     .then(function (response) {
-      console.log(response.data.data)
       projects.value = response.data.data
     })
     .catch(function (error) {
@@ -20,6 +19,24 @@ onMounted(() => {
       isLoading.value = false
     })
 })
+
+function countDownDay(targetDate) {
+  const now = new Date()
+  
+  const target = new Date(targetDate);
+  
+  const timeDiference = target - now
+  
+  const dayInSecond = 1000 * 60 * 60 * 24
+  const dayToGo = Math.ceil(timeDiference / dayInSecond)
+
+  if (dayToGo < 0) {
+    return 'Terlewat'
+  }
+  
+  return 'tersisa:' + dayToGo + 'hari lagi'
+}
+
 </script>
 
 <template>
@@ -48,7 +65,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center flex-wrap gap-5">
-      <CardProject v-for="value in projects">
+      <CardProject v-for="value in projects" :projectId="value.id">
         <template #title>
           {{ value.title }}
         </template>
@@ -56,7 +73,7 @@ onMounted(() => {
           {{ value.deadline }}
         </template>
         <template #deadlineLeft>
-          {{ value.deadline }}
+          {{ countDownDay(value.deadline) }}
         </template>
         <template #body>
           {{ value.summary }}
