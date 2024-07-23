@@ -8,15 +8,14 @@ const isProjectsOpen = ref(true)
 
 <template>
   <aside
-    class="bg-neutral-900 border-r border-neutral-800 p-5 h-screen w-[240px] fixed top-0 bottom-0 left-0 overflow-y-auto z-[20000]">
+    class="bg-neutral-900 border-r border-neutral-800 p-5 h-screen w-[240px] sticky top-0 bottom-0 left-0 overflow-y-auto z-[20000]">
 
-
-    <div class="flex items-center justify-between mt-5 cursor-pointer" @click="()=>{isProjectsOpen = !isProjectsOpen}">
+    <div class="flex items-center justify-between mt-5 cursor-pointer" @click="() => { isProjectsOpen = !isProjectsOpen }">
       <div class="flex gap-3 items-center">
         <IconBriefcase2 class="w-10" />
         Projects
       </div>
-      <IconChevronDown :class="isProjectsOpen ? '': 'rotate-[-90deg]'" class="transition-all" />
+      <IconChevronDown :class="isProjectsOpen ? '' : 'rotate-[-90deg]'" class="transition-all" />
     </div>
 
     <div v-if="isProjectsOpen">
@@ -26,11 +25,7 @@ const isProjectsOpen = ref(true)
       </RouterLink>
       <RouterLink to="/done" class="flex gap-3 mt-5">
         <IconPointFilled class="w-10" />
-        Done
-      </RouterLink>
-      <RouterLink to="/on-progress" class="flex gap-3 mt-5 mb-10">
-        <IconPointFilled class="w-10" />
-        Progress
+        Draft
       </RouterLink>
     </div>
 
