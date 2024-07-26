@@ -43,7 +43,7 @@ const isProjectsOpen = ref(true)
   </aside>
 </template>
 
-<style>
+<style scoped>
 .router-link-active{
   @apply bg-[#1d1d1d] rounded-full border border-neutral-700;
 }

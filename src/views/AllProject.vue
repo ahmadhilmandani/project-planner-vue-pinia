@@ -65,7 +65,7 @@ function countDownDay(targetDate) {
       </div>
     </div>
     <div class="flex items-center flex-wrap gap-5">
-      <CardProject v-for="value in projects" :projectId="value.id">
+      <CardProject v-for="value in projects" :projectId="value.id" :isDone="value.is_done">
         <template #title>
           {{ value.title }}
         </template>

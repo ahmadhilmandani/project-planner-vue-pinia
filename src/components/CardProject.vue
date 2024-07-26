@@ -5,7 +5,7 @@ import FillButtonComp from './FillButtonComp.vue'
 defineProps({
   isDone: {
     validator(value) {
-      return [true, false].includes(value)
+      return [0, 1].includes(value)
     }
   },
   projectId: Number
@@ -18,9 +18,9 @@ defineProps({
     class="bg-neutral-900 border-[0.8px] border-neutral-800 w-[300px] aspect-[13/16] rounded-tr-3xl px-4 py-8 relative">
     <div>
       <small class="py-1 px-3 text-center rounded-full w-fit" :class="isDone ? 'bg-emerald-500' : 'bg-rose-500'">
-      {{ isDone ? 'Selesai' : 'Belum selesai'}}
+      {{ isDone == 1 ? 'Selesai' : 'Belum selesai'}}
     </small>
-      <h1 class="text-2xl text-white mt-3">
+      <h1 class="text-2xl text-white mt-3 line-clamp-1">
         <slot name="title"></slot>
       </h1>
       <div class="flex items-center gap-5 mt-2">
@@ -37,10 +37,10 @@ defineProps({
     </div>
 
     <div class="text-white text-sm mt-5 border-neutral-700">
-      <div class="text-sm text-neutral-500 mb-2">
+      <div class="text-sm text-neutral-500 mb-2 ">
         Deskripsi :
       </div>
-      <p>
+      <p class="line-clamp-5">
         <slot name="body"></slot>
       </p>
     </div>
