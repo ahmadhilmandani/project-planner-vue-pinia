@@ -2,6 +2,7 @@
 import { IconCalendarDue } from '@tabler/icons-vue'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 import { useOpenModal } from '../stores/openModalStore'
@@ -11,6 +12,7 @@ import FillButtonComp from '../components/FillButtonComp.vue'
 import OutlineButtonComp from '../components/OutlineButtonComp.vue'
 
 const id = useRoute().params.id
+const router = useRouter()
 
 const openModal = useOpenModal()
 
@@ -53,7 +55,20 @@ function saveEdit() {
   }).finally(() => {
     isLoading.value = false
   })
+}
 
+
+function deleteProject() {
+  isLoading.value = true
+  axios.delete(`http://127.0.0.1:8000/api/v1/task/${id}`)
+    .then(() => {
+      router.replace('/')
+    }).catch((err) => {
+      console.log(err)
+    }).finally(() => {
+      isLoading.value = false
+      openModal.closeModal()
+    })
 }
 
 onMounted(() => {
@@ -69,7 +84,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ModalComp v-if="openModal.isModalOpen" :fillButtonAction="() => { changeStatus(1) }" />
+  <ModalComp v-if="openModal.isModalOpen" :fillButtonAction="() => { deleteProject() }" :msg="openModal.modalMsg" />
 
   <div v-if="isLoading"
     class="bg-neutral-950 absolute top-0 right-0 left-0 bottom-0 z-[1000000000000] opacity-80 flex justify-center items-center text-white">
@@ -82,9 +97,10 @@ onMounted(() => {
         All > See Detail Projects
       </small>
       <header>
-        <input :readonly="!isEditMode"
+        <textarea :readonly="!isEditMode"
           :class="isEditMode ? 'border-b border-neutral-600 focus:border-emerald-500' : 'border-0'"
-          class="text-5xl mt-3 mb-8 block bg-transparent bebas-neue-font outline-0" v-model="projectData.title" />
+          class="text-5xl mt-3 mb-8 block bg-transparent bebas-neue-font outline-0 w-full" v-model="projectData.title" >
+          </textarea>
       </header>
       <section class="flex items-center gap-10">
         <div class="flex text-white items-center gap-2">
@@ -143,7 +159,7 @@ onMounted(() => {
     <aside class="border w-[25%] border-neutral-700 p-5 h-fit fixed right-10">
       <div v-if="!isEditMode">
         <div class="mb-5" v-if="projectData.is_done == 0">
-          <FillButtonComp buttonStyle="primary" :onClickAction="openModal.openModal">
+          <FillButtonComp buttonStyle="primary" :onClickAction="() => { changeStatus(1) }">
             Selesaikan
           </FillButtonComp>
         </div>
@@ -151,7 +167,8 @@ onMounted(() => {
           <OutlineButtonComp :onClickAction="() => { isEditMode = true }" buttonStyle="warning">
             Edit
           </OutlineButtonComp>
-          <OutlineButtonComp buttonStyle="danger">
+          <OutlineButtonComp buttonStyle="danger"
+            :onClickAction="() => { openModal.openModal('Apakah proyek ingin dihapus?') }">
             Delete
           </OutlineButtonComp>
         </div>

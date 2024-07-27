@@ -2,8 +2,8 @@
   <div
     class="w-full h-screen flex justify-center items-center bg-neutral-950/90 fixed top-0 bottom-0 right-0 left-0 z-[999999999999999]">
     <div class="w-[400px] bg-neutral-700 px-10 py-5 rounded-xl shadow-2xl text-center">
-      <h1>
-        Anda Yakin Ingin Menyelesaikan Proyek?
+      <h1 class="text-2xl">
+        {{ msg }}
       </h1>
 
       <div class="mt-5">
@@ -27,7 +27,8 @@ import OutlineButtonComp from './OutlineButtonComp.vue'
 import { useOpenModal } from '../stores/openModalStore'
 
 defineProps({
-  fillButtonAction: Function
+  fillButtonAction: Function,
+  msg: String
 })
 
 const openModal = useOpenModal()
