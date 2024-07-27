@@ -34,7 +34,7 @@ function countDownDay(targetDate) {
     return 'Terlewat'
   }
   
-  return 'tersisa:' + dayToGo + 'hari lagi'
+  return 'tersisa: ' + dayToGo + ' hari'
 }
 
 </script>

@@ -23,6 +23,10 @@
     width: 5px;
   }
 
+  .bebas-neue-font{
+    font-family: "Bebas Neue", sans-serif;
+  }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-neutral-700 rounded-full
   }
