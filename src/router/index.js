@@ -4,6 +4,7 @@ import Done from '../views/Done.vue'
 import OnProgress from '../views/OnProgress.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import DetailProject from '../views/DetailProject.vue'
+import AddProjects from '../views/AddProjects.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,11 @@ const router = createRouter({
           path: '/on-progress',
           name: 'OnProgress',
           component: OnProgress
+        },
+        {
+          path: '/add-task',
+          name: 'AddTask',
+          component: AddProjects
         }
       ]
     }

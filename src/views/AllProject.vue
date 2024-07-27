@@ -3,6 +3,7 @@ import axios from 'axios';
 import { onMounted, ref } from 'vue'
 import CardProject from '../components/CardProject.vue'
 import { IconAdjustmentsHorizontal, IconPlus } from '@tabler/icons-vue';
+import { RouterLink } from 'vue-router';
 
 const projects = ref(null)
 const isLoading = ref(true)
@@ -58,10 +59,10 @@ function countDownDay(targetDate) {
           Filter
           <IconAdjustmentsHorizontal />
         </div>
-        <button class="flex items-center gap-2 px-5 py-1 rounded-full bg-emerald-500 font-bold border-0">
+        <RouterLink to="/add-task" class="flex items-center gap-2 px-5 py-1 rounded-full bg-emerald-500 font-bold border-0">
           Add Projects
           <IconPlus class="text-neutral-800" />
-        </button>
+        </RouterLink>
       </div>
     </div>
     <div class="flex items-center flex-wrap gap-5">
