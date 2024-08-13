@@ -7,6 +7,7 @@ import DetailProject from '../views/DetailProject.vue'
 import AddProjects from '../views/AddProjects.vue'
 import Login from '../views/Login.vue'
 import LoginLayout from '../layouts/LoginLayout.vue'
+import Register from '../views/Register.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,7 +20,12 @@ const router = createRouter({
           path: '',
           name: 'login',
           component: Login
-        }
+        },
+        {
+          path: '/register',
+          name: 'register',
+          component: Register
+        },
       ]
     },
     {

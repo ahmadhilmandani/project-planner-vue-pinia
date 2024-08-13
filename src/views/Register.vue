@@ -23,14 +23,21 @@ import { RouterLink } from 'vue-router';
         class=" block w-full bg-transparent border rounded-lg border-zinc-400 focus:border-emerald-500 focus:outline-none p-2 text-xs mx-auto">
     </div>
     <div class="max-w-[320px] w-full mx-auto mb-5">
+      <label class="block text-zinc-300 mb-2 text-xs">
+        Confirm Password
+      </label>
+      <input type="password"
+        class=" block w-full bg-transparent border rounded-lg border-zinc-400 focus:border-emerald-500 focus:outline-none p-2 text-xs mx-auto">
+    </div>
+    <div class="max-w-[320px] w-full mx-auto mb-5">
       <FillButtonComp buttonStyle="primary">
-        Login
+        Register
       </FillButtonComp>
     </div>
     <div class="max-w-[320px] w-full mx-auto flex gap-2 justify-center text-xs text-center">
-      Not Register yet?
+      Already Registered?
       <RouterLink to="/register" class="text-emerald-500 text-xs">
-        Register here!
+        Login here!
       </RouterLink>
     </div>
   </div>
