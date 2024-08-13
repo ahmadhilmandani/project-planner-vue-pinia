@@ -19,6 +19,23 @@
     font-family: "Bebas Neue", sans-serif;
     @apply tracking-wide;
   }
+
+  :not(h1, h2, h3, h4, h5, h6) {
+    @apply text-[16px] sm:max-xl:text-[24px];
+  }
+
+  h1 {
+    @apply text-[32px] xl:text-[24px] sm:max-xl:text-[72px] font-bold;
+  }
+
+  h2 {
+    @apply text-[24px] xl:text-[20px] sm:max-xl:text-[60px] font-bold;
+  }
+
+  h3 {
+    @apply text-[20px] xl:text-[16px] sm:max-xl:text-[48px] font-bold;
+  }
+  
   ::-webkit-scrollbar {
     width: 5px;
   }

@@ -5,10 +5,23 @@ import OnProgress from '../views/OnProgress.vue'
 import MainLayout from '../layouts/MainLayout.vue'
 import DetailProject from '../views/DetailProject.vue'
 import AddProjects from '../views/AddProjects.vue'
+import Login from '../views/Login.vue'
+import LoginLayout from '../layouts/LoginLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/login',
+      component: LoginLayout,
+      children: [
+        {
+          path: '',
+          name: 'login',
+          component: Login
+        }
+      ]
+    },
     {
       path: '/',
       component: MainLayout,
