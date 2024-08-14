@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '/node_modules/flowbite-vue/dist/index.css';
+
 @layer base {
   * {
-    @apply leading-[150%] text-white;
+    @apply leading-[150%];
   }
   *:not(h1, h2, h3, h4, h5, h6, button) {
     font-family: "Inter", sans-serif;
+    color: white;
+  }
+  div[data-testid="toast-content"]{
+    @apply text-sm text-neutral-700
+
   }
   button,
   h1,
