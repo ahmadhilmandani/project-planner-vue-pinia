@@ -46,7 +46,7 @@ function countDownDay(targetDate) {
     Loading..
   </div>
 
-  <div class="bg-neutral-800 w-full min-h-screen p-10 flex-1">
+  <div class="bg-neutral-800 w-[calc(100%_-_240px)] min-h-screen p-10">
     <small class="text-neutral-400">
       All
     </small>

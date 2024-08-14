@@ -12,6 +12,6 @@ export default {
 </script>
 
 <template>
-  <div class="bg-neutral-800 flex flex-col justify-center items-center w-full min-h-screen gap-10 px-10 py-24">
+  <div class="bg-neutral-800 flex flex-col justify-center items-center w-[calc(100%_-_240px)] min-h-screen gap-10 px-10 py-24">
   </div>
 </template>

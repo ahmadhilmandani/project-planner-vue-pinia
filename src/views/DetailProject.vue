@@ -91,7 +91,7 @@ onMounted(() => {
     Loading..
   </div>
 
-  <main v-else class="bg-neutral-800 min-h-screen p-10 flex-1 flex justify-between relative">
+  <main v-else class="bg-neutral-800 min-h-screen p-10 w-[calc(100%_-_240px)] flex justify-between relative">
     <div class="w-[65%]">
       <small class="text-neutral-400">
         All > See Detail Projects

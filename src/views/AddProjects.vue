@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-neutral-800 min-h-screen p-10 flex-1">
+  <main class="bg-neutral-800 min-h-screen p-10 w-[calc(100%_-_240px)]">
 
     <div v-if="isLoading"
       class="bg-neutral-950 absolute top-0 right-0 left-0 bottom-0 z-[1000000000000] opacity-80 flex justify-center items-center text-white">
